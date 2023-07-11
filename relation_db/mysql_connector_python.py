@@ -7,7 +7,8 @@ def connect(db_name):
             host='localhost',
             user='root',
             password='19865421',
-            database=db_name
+            database=db_name,
+            allow_local_infile=True
         )
         return my_db
     except Exception :
