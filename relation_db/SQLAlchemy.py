@@ -35,6 +35,7 @@ class Task(Base):
 
 
 Base.metadata.create_all(engine)
+# creates all our table
 
 session_maker = sessionmaker()
 session_maker.configure(bind=engine)
