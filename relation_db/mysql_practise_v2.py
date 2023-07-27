@@ -31,5 +31,5 @@ with engine.connect() as connection:
     for res in result:
         print(res)
 
-    delete_Maria_teacher = teacher.delete().where(id == 5)
+    delete_Maria_teacher = teacher.delete().where(teacher.c.id == 5)
     connection.execute(delete_Maria_teacher)
