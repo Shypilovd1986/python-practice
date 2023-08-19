@@ -1,0 +1,37 @@
+version: "3.5"
+services:
+  flask-app:
+    image: ubuntu                        # we can use < build: . >   instead image, docker will create image and use it
+    container_name: school_manager
+    ports:
+      - '5000:5000'
+      - '4000:4000'
+    restart: unless-stopped
+    networks:
+      - internet
+      - app-net
+    depends_on:
+      - app-db
+      - app-redis
+  app-db:
+    image: postgres
+    container_name: app-postgres
+    restart: unless-stopped
+    environment:
+      - 'POSTGRES_PASSWORD=19865421'
+    networks:
+      - app-net
+  app-redis:
+    image: redis
+    container_name: app-redis
+    restart: unless-stopped
+    networks:
+      - app-net
+networks:
+  internet:
+    name: internet
+    driver: bridge
+  app-net:
+    name: app-net
+    driver: bridge
+
